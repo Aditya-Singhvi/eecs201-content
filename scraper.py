@@ -25,7 +25,7 @@ def scrape_videos(soup, file):
         for detail in details:
             vid_title = detail.summary.string
             src = detail.iframe["src"]
-            f.write(create_link(vid_title, transformEmbedURL(src)))
+            f.write("* " + create_link(vid_title, transformEmbedURL(src)))
             f.write("\n")
 
         f.write("\n")
@@ -46,6 +46,7 @@ def scrape_assignments(soup, base_url, base_filepath):
     for day in days:
         number = day.h2.string 
         number = number if number else ""
+        number = "0" + number if len(number) < 2 else number
         assignments = day.find_all(class_="section")[1]
         links = [a["href"] for a in assignments.find_all('a')]
 
