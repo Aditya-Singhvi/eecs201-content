@@ -3,7 +3,7 @@ import requests
 
 def transformEmbedURL(original_url):
     id = original_url.split('/')[-1]
-    return "www.youtube.com/watch?v=" + id
+    return "https://www.youtube.com/watch?v=" + id
 
 def create_link(text, url):
     return "[" + text + "](" + url + ")"
